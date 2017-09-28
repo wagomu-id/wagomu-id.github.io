@@ -1,0 +1,49 @@
+
+$(function () { //on DOM ready
+	var userFeed = new Instafeed({
+		get: 'user',
+		userId: '2198854349',
+		clientId: '5d8b4f6b55504f34865e864de1c43d47',
+		accessToken: '2198854349.5d8b4f6.454af6e1d192445c970a316ee3c47212',
+		resolution: 'standard_resolution',
+		template: '<div class="insta-img"><a href="{{link}}" target="_blank" id="{{id}}"><img src="{{image}}" /></a></div>',
+		sortBy: 'most-recent',
+		limit: 10,
+		links: false,
+	});
+	userFeed.run();
+	$("#instafeed").simplyScroll({
+	    autoMode: 'loop',
+	    startOnLoad: true,
+	    auto: true,
+	    speed: 1,
+	    pauseOnHover: true,
+	    pauseOnTouch: true
+	});
+});
+$(document).ready(function(){  
+  $('.center').slick({
+    slidesToShow: 5,
+    responsive: [
+      {
+        breakpoint: 720,
+        settings: {
+          centerMode: true,
+          centerPadding: '0px',
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+});
+
+$(document).ready(function(){
+  $('.page-scroll').on('click',function(){
+    var Tujuan = $(this).attr('href'); //ambil href
+    var elemenTujuan = $(Tujuan); //tangkap element
+    //pindahkan scroll
+    $('body').animate({
+      scrollTop: elemenTujuan.offset().top - 90
+    }, 500);
+  });
+});
